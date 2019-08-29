@@ -7,14 +7,6 @@ let db = admin.firestore();
 let otps = db.collection('otps');
 
 const app = express();
-
-app.get('/otps', (req, res) => {
-  res.send('GET /otps/save?receiver=receiverKey&sender=senderNumber&body=bodyContent\n' +
-    'GET /otps/get\n' +
-    'GET /otps/get/{receiverKey}\n' +
-    'GET /otps/delete');
-});
-
 app.get('/otps/save', (req, res) => {
   if (!req.query.receiver || !req.query.sender || !req.query.body) {
     return res.status(400).send('invalid arguments');
